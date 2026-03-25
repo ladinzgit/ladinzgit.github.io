@@ -94,24 +94,6 @@
       color: var(--accent);
     }
 
-    .hero-main {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .profile-photo {
-      height: clamp(240px, 30vw, 340px);
-      width: auto;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 1px solid var(--border2);
-      box-shadow: 0 20px 42px rgba(0, 0, 0, .35);
-      flex-shrink: 0;
-    }
-
     .header-desc {
       margin-top: 2rem;
       max-width: 520px;
@@ -505,17 +487,6 @@
       transition: opacity .6s ease, transform .6s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 720px) {
-      .hero-main {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .profile-photo {
-        height: clamp(210px, 58vw, 300px);
-      }
-    }
   </style>
 </head>
 <body>
@@ -534,21 +505,17 @@
   <header>
     <div class="container">
       <p class="header-label fade-in">Software Convergence — Kyung Hee Univ.</p>
-      <div class="hero-main fade-in">
-        <h1 class="header-name">
-          김<em>연길</em><br/>Gim Yeongil
-        </h1>
-        <img src="profile.png" alt="김연길 프로필 사진" class="profile-photo" />
-      </div>
+      <h1 class="header-name fade-in">
+        김<em>연길</em><br/>Gim Yeongil
+      </h1>
       <p class="header-desc fade-in">
-        AI Agent 설계와 실험에 관심을 가진 개발자입니다.
-        직접 설계하고, 직접 배포하고, 직접 부수면서 배웁니다.
+        LLM과 AI Agent를 실제로 작동하는 서비스로 만드는 데 관심을 가진 개발자입니다.
+        기억 구조 설계부터 배포 파이프라인까지, 직접 만들고 운영하면서 배웁니다.
       </p>
       <div class="header-meta fade-in">
-        <span class="meta-chip highlight">3학년 재학 중</span>
+        <span class="meta-chip highlight">AI Application Engineer</span>
         <span class="meta-chip">GPA 4.14 / 4.5</span>
-        <span class="meta-chip">KHUDA</span>
-        <span class="meta-chip">Python · AI · Agents</span>
+        <span class="meta-chip">Python · LLM · RAG</span>
       </div>
     </div>
   </header>
@@ -577,8 +544,8 @@
         <div class="about-card reveal" style="grid-column: 1 / -1;">
           <div class="about-card-label">Focus</div>
           <div class="about-card-value">
-            AI Agent 설계 및 실험, LLM 기반 서비스 개발, 벡터 DB 활용 장기 기억 시스템,
-            Multi-Agent 시뮬레이션, 그래프 기반 RAG 시스템
+            LLM 기반 서비스 설계 및 배포, RAG 파이프라인 구축, AI Agent 시스템 개발,
+            벡터 DB 활용 장기 기억 시스템, 파인튜닝을 통한 모델 커스터마이징
           </div>
         </div>
       </div>
@@ -654,8 +621,8 @@
             <p class="project-desc">
               ConceptNet 5 지식 그래프와 로컬 LLM(Ollama)을 결합한 한국어 질의응답 시스템.
               <strong>Neo4j · FastAPI · Redis · Gradio</strong> 기반의 5개 서비스를 Docker Compose로 오케스트레이션.
-              임베딩 기반 의미 검색, Multi-hop 그래프 탐색(최대 3단계), Redis 캐싱으로 응답 속도 85% 향상.
-              280만 개 이상의 ConceptNet 관계 데이터를 처리.
+              Simple / Embedding / Hybrid 3가지 검색 전략의 정확도·속도 트레이드오프를 직접 비교 실험.
+              Redis LRU 캐싱 도입으로 반복 질문 응답 속도 <strong>85% 향상</strong>.
             </p>
           </div>
           <a href="https://github.com/ladinzgit/GraphRAG" target="_blank" class="project-link">
@@ -666,23 +633,25 @@
           </a>
         </div>
 
-        <!-- dinzbot -->
+        <!-- dual-memory-agent -->
         <div class="project-item">
           <div>
             <div class="project-tags">
               <span class="project-tag tag-ai">LLM</span>
-              <span class="project-tag tag-ai">Pinecone</span>
+              <span class="project-tag tag-ai">Vector DB</span>
               <span class="project-tag tag-bot">Discord Bot</span>
+              <span class="project-tag tag-infra">CI/CD</span>
             </div>
-            <div class="project-name">dinzbot</div>
+            <div class="project-name">dual-memory-agent</div>
             <p class="project-desc">
-              페르소나 기반 Discord AI 챗봇. <strong>SQLite(단기) + Pinecone 벡터 DB(장기)</strong>의 이중 기억 구조 설계.
-              유사도에 시간 감쇠 <strong>exp(−λ × 경과일수)</strong>를 적용해 오래된 기억을 자연스럽게 필터링.
+              페르소나 기반 Discord AI 챗봇. <strong>SQLite(단기) + Pinecone 벡터 DB(장기)</strong>의
+              이중 기억 구조를 직접 설계. 유사도 점수에 시간 감쇠
+              <strong>exp(−λ × 경과일수)</strong>를 적용해 오래된 기억을 자연스럽게 필터링(반감기 약 14일).
               누적 대화 수 기반 친밀도 레벨(0~2, owner)에 따라 시스템 프롬프트를 동적 구성.
-              실제 서버에 배포하여 운영 중.
+              GitHub Actions를 통한 자동 배포 파이프라인 구축. 실제 서버 운영 중.
             </p>
           </div>
-          <a href="https://github.com/ladinzgit/dinzbot" target="_blank" class="project-link">
+          <a href="https://github.com/ladinzgit/dual-memory-agent" target="_blank" class="project-link">
             GitHub
             <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M2 8L8 2M8 2H3M8 2v5"/>
@@ -793,7 +762,7 @@
         <h2 class="section-title">Activities</h2>
       </div>
       <div class="activity-item reveal">
-        <div class="activity-name">KHUDA 8th</div>
+        <div class="activity-name">KHUDA</div>
         <div class="activity-sub">경희대학교 데이터분석 · AI 학회</div>
         <p class="activity-desc">
           경희대학교 데이터분석·AI 학회 KHUDA 활동.
@@ -811,12 +780,12 @@
         함께 만들어<br/><em>볼까요?</em>
       </div>
       <div class="contact-links reveal">
-        <a href="mailto:ygg33333@gmail.com" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#6e1709095d5d5d5d5d2e09030f0702400d0103" class="contact-link">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4">
             <rect x="1" y="2.5" width="11" height="8" rx="1.2"/>
             <path d="M1 3.5l5.5 4 5.5-4"/>
           </svg>
-          ygg33333@gmail.com
+          <span class="__cf_email__" data-cfemail="9ce5fbfbafafafafafdcfbf1fdf5f0b2fff3f1">[email&#160;protected]</span>
         </a>
         <a href="https://github.com/ladinzgit" target="_blank" class="contact-link">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
@@ -827,23 +796,14 @@
       </div>
       <div class="footer-bottom reveal">
         <span class="footer-copy">Gim Yeongil · 경희대학교 소프트웨어융합학과</span>
-        <span class="footer-copy">2025</span>
+        <span class="footer-copy">2026</span>
       </div>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Intersection Observer for reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          entry.target.style.transitionDelay = (i * 0.04) + 's';
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.08 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
