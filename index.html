@@ -94,6 +94,24 @@
       color: var(--accent);
     }
 
+    .hero-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .profile-photo {
+      height: clamp(240px, 30vw, 340px);
+      width: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border2);
+      box-shadow: 0 20px 42px rgba(0, 0, 0, .35);
+      flex-shrink: 0;
+    }
+
     .header-desc {
       margin-top: 2rem;
       max-width: 520px;
@@ -487,6 +505,17 @@
       transition: opacity .6s ease, transform .6s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) {
+      .hero-main {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .profile-photo {
+        height: clamp(210px, 58vw, 300px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -505,9 +534,12 @@
   <header>
     <div class="container">
       <p class="header-label fade-in">Software Convergence — Kyung Hee Univ.</p>
-      <h1 class="header-name fade-in">
-        김<em>연길</em><br/>Gim Yeongil
-      </h1>
+      <div class="hero-main fade-in">
+        <h1 class="header-name">
+          김<em>연길</em><br/>Gim Yeongil
+        </h1>
+        <img src="profile.png" alt="김연길 프로필 사진" class="profile-photo" />
+      </div>
       <p class="header-desc fade-in">
         AI Agent 설계와 실험에 관심을 가진 개발자입니다.
         직접 설계하고, 직접 배포하고, 직접 부수면서 배웁니다.
