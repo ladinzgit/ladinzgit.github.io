@@ -676,11 +676,11 @@
             </div>
             <div class="project-name">dual-memory-agent</div>
             <p class="project-desc">
-              페르소나 기반 Discord AI 챗봇. <strong>SQLite(단기) + Pinecone 벡터 DB(장기)</strong>의
+              페르소나 기반 AI 챗봇 백엔드. <strong>SQLite(단기) + Pinecone 벡터 DB(장기)</strong>의
               이중 기억 구조를 직접 설계. 유사도 점수에 시간 감쇠
               <strong>exp(−λ × 경과일수)</strong>를 적용해 오래된 기억을 자연스럽게 필터링(반감기 약 14일).
-              누적 대화 수 기반 친밀도 레벨(0~2, owner)에 따라 시스템 프롬프트를 동적 구성.
-              GitHub Actions를 통한 자동 배포 파이프라인 구축. 실제 서버 운영 중.
+              누적 대화 수 기반 친밀도 레벨에 따라 시스템 프롬프트를 동적 구성.
+              <strong>GCP Cloud Run</strong> 기반 서버리스 배포로 클라이언트와 AI 로직을 완전히 분리.
             </p>
           </div>
           <a href="https://github.com/ladinzgit/dual-memory-agent" target="_blank" class="project-link">
@@ -725,7 +725,7 @@
             </div>
             <div class="project-name">hamyo</div>
             <p class="project-desc">
-              커뮤니티 서버 '비몽책방'을 위한 다기능 Discord 봇.
+              커뮤니티 디스코드 서버를 위한 다기능 Discord 봇.
               레벨 시스템, 경제, 음성 활동 추적, 생일 관리, AI 운세 등 15개 이상의 모듈을
               <strong>Cog 기반 아키텍처</strong>로 설계. 중앙 Scheduler Cog로 모든 예약 작업을 일괄 관리.
               외부 강제 없이 꾸준히 유지·발전시켜 온 개인 프로젝트.
@@ -812,12 +812,12 @@
         함께 만들어<br/><em>볼까요?</em>
       </div>
       <div class="contact-links reveal">
-        <a href="/cdn-cgi/l/email-protection#6e1709095d5d5d5d5d2e09030f0702400d0103" class="contact-link">
+        <a href="mailto:ygg33333@gmail.com" class="contact-link">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4">
             <rect x="1" y="2.5" width="11" height="8" rx="1.2"/>
             <path d="M1 3.5l5.5 4 5.5-4"/>
           </svg>
-          <span class="__cf_email__" data-cfemail="9ce5fbfbafafafafafdcfbf1fdf5f0b2fff3f1">[email&#160;protected]</span>
+          ygg33333@gmail.com
         </a>
         <a href="https://github.com/ladinzgit" target="_blank" class="contact-link">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
@@ -833,7 +833,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // Intersection Observer for reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
